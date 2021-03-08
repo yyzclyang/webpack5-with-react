@@ -6,7 +6,13 @@
   "repository": "https://github.com/yyzclyang/webpack5-with-react",
   "author": "yyzcl",
   "license": "MIT",
+  "scripts": {
+    "build": "webpack --config webpack.config.prod.js"
+  },
   "devDependencies": {
-    "prettier": "^2.2.1"
+    "prettier": "^2.2.1",
+    "webpack": "^5.24.4",
+    "webpack-cli": "^4.5.0",
+    "webpack-merge": "^5.7.3"
   }
 }
