@@ -1,0 +1,9 @@
+{
+  "name": "webpack5-with-react",
+  "version": "0.0.1",
+  "description": "webpack5 with react typescript",
+  "main": "index.js",
+  "repository": "https://github.com/yyzclyang/webpack5-with-react",
+  "author": "yyzcl",
+  "license": "MIT"
+}
