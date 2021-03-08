@@ -5,5 +5,8 @@
   "main": "index.js",
   "repository": "https://github.com/yyzclyang/webpack5-with-react",
   "author": "yyzcl",
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "prettier": "^2.2.1"
+  }
 }
