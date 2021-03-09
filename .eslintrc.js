@@ -11,7 +11,9 @@ module.exports = {
       rules: {
         'import/prefer-default-export': 'off',
         'react/jsx-uses-react': 'off',
-        'react/react-in-jsx-scope': 'off'
+        'react/react-in-jsx-scope': 'off',
+        'import/extensions': 'off',
+        'no-console': 'off'
       }
     }
   ]
