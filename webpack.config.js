@@ -1,8 +1,9 @@
 const path = require('path');
 const ESLintPlugin = require('eslint-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
-  entry: './src/index.js',
+  entry: './src/index.tsx',
   module: {
     rules: [
       {
@@ -17,11 +18,17 @@ module.exports = {
   plugins: [
     new ESLintPlugin({
       extensions: ['.js', '.jsx', 'ts', 'tsx']
+    }),
+    new HtmlWebpackPlugin({
+      title: 'webpack5-with-react',
+      template: './src/index.html',
+      favicon: './src/favicon.ico'
     })
   ],
   resolve: {
     alias: {
       '@': path.resolve(__dirname, './src')
-    }
+    },
+    extensions: ['.ts', '.tsx', '.js', '.jsx']
   }
 };
