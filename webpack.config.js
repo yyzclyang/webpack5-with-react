@@ -43,7 +43,8 @@ module.exports = {
     new HtmlWebpackPlugin({
       title: 'webpack5-with-react',
       template: './src/index.html',
-      favicon: './src/favicon.ico'
+      favicon: './src/favicon.ico',
+      inject: 'body'
     })
   ],
   resolve: {
