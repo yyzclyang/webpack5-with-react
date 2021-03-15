@@ -1,6 +1,7 @@
 const path = require('path');
 const ESLintPlugin = require('eslint-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 module.exports = {
   entry: './src/index.tsx',
@@ -20,7 +21,12 @@ module.exports = {
       {
         test: /\.s[ac]ss$/,
         use: [
-          'style-loader',
+          {
+            loader:
+              process.env.NODE_ENV !== 'production'
+                ? 'style-loader'
+                : MiniCssExtractPlugin.loader
+          },
           {
             loader: 'css-loader',
             options: {
