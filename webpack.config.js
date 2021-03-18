@@ -9,6 +9,7 @@ module.exports = {
     path: path.resolve(__dirname, './dist'),
     filename: 'static/js/[name].[contenthash].js'
   },
+  devtool: 'source-map',
   module: {
     rules: [
       {
@@ -35,6 +36,7 @@ module.exports = {
               }
             }
           },
+          { loader: 'postcss-loader' },
           {
             loader: 'sass-loader'
           }
