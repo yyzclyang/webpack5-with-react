@@ -1,4 +1,5 @@
 const path = require('path');
+const { execSync } = require('child_process');
 const ESLintPlugin = require('eslint-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
@@ -65,6 +66,13 @@ module.exports = {
       template: './src/index.html',
       favicon: './src/favicon.ico',
       inject: 'body',
+      minify: {
+        removeComments: false,
+      },
+      buildDate: new Date().toLocaleString(),
+      branch: execSync('git rev-parse --abbrev-ref HEAD').toString().trim(),
+      commit: execSync('git show -s --format=%h').toString().trim(),
+      commitDate: execSync('git show -s --format=%ai').toString().trim(),
     }),
   ],
   resolve: {
