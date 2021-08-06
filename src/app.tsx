@@ -1,18 +1,28 @@
-import { FC } from 'react';
+import { FC, Suspense, lazy } from 'react';
+import { Router, Route, Switch, Redirect } from 'react-router';
+import { NavLink } from 'react-router-dom';
+import history from '@/utils/history';
 import styles from './app.module.scss';
-import vars from './vars.module.scss';
 
 const App: FC = () => (
-  <>
-    <h1 className={styles.title}>webpack5 with react</h1>
-    <p style={{ color: vars.danger }}>sass variable example</p>
-    <img
-      className={styles['image-tag']}
-      src={require('@/assets/images/cat.jpg')}
-      alt="cat"
-    />
-    <div className={styles['background-image']} />
-  </>
+  <Router history={history}>
+    <NavLink className={styles.link} to="/">
+      home
+    </NavLink>
+    <NavLink className={styles.link} to="/animal">
+      animal
+    </NavLink>
+    <Suspense fallback={<span>loading</span>}>
+      <Switch>
+        <Route
+          path="/animal"
+          component={lazy(() => import('./pages/animal'))}
+        />
+        <Route path="/" exact component={lazy(() => import('./pages/home'))} />
+        <Redirect to="/" />
+      </Switch>
+    </Suspense>
+  </Router>
 );
 
 export default App;

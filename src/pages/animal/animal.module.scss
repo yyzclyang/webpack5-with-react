@@ -1,0 +1,16 @@
+@import '~@/vars.module.scss';
+
+.title {
+  color: $theme-color;
+}
+
+.image-tag {
+  width: 50%;
+  height: 50%;
+}
+
+.background-image {
+  width: 420px;
+  height: 430px;
+  background: url('~@/assets/images/cat.png') 100%/100%;
+}
