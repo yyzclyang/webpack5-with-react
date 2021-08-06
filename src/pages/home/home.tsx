@@ -1,4 +1,4 @@
-import vars from '@/vars.module.scss';
+import vars from '@/styles/vars.module.scss';
 import styles from './home.module.scss';
 
 export default () => (
