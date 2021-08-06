@@ -9,6 +9,6 @@ export default () => (
       alt="cat"
     />
     <h3 className={styles.title}>background image</h3>
-    <div className={styles['background-image']} />
+    <div className={styles.backgroundImage} />
   </div>
 );
