@@ -16,15 +16,15 @@ module.exports = merge(baseConfig, {
           priority: 10,
           test: /[\\/]node_modules[\\/]/,
           name: 'vendors',
-          chunks: 'all' // all 表示同步加载和异步加载，async 表示异步加载，initial 表示同步加载
-        }
-      }
-    }
+          chunks: 'all', // all 表示同步加载和异步加载，async 表示异步加载，initial 表示同步加载
+        },
+      },
+    },
   },
   plugins: [
     new CleanWebpackPlugin(),
     new MiniCssExtractPlugin({
-      filename: 'static/css/index.[contenthash].css'
-    })
-  ]
+      filename: 'static/css/index.[contenthash].css',
+    }),
+  ],
 });

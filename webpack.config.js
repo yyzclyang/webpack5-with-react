@@ -7,7 +7,8 @@ module.exports = {
   entry: './src/index.tsx',
   output: {
     path: path.resolve(__dirname, './dist'),
-    filename: 'static/js/[name].[contenthash].js'
+    filename: 'static/js/[name].[contenthash].js',
+    assetModuleFilename: 'static/images/[name].[hash][ext][query]',
   },
   devtool: 'source-map',
   module: {
@@ -16,49 +17,58 @@ module.exports = {
         test: /\.[jt]sx?$/,
         exclude: /node_modules/,
         use: {
-          loader: 'babel-loader'
-        }
+          loader: 'babel-loader',
+        },
       },
       {
-        test: /\.s[ac]ss$/,
+        test: /\.s?[ac]ss$/,
         use: [
           {
             loader:
               process.env.NODE_ENV !== 'production'
                 ? 'style-loader'
-                : MiniCssExtractPlugin.loader
+                : MiniCssExtractPlugin.loader,
           },
           {
             loader: 'css-loader',
             options: {
               modules: {
-                auto: true
-              }
-            }
+                auto: true,
+              },
+            },
           },
           { loader: 'postcss-loader' },
           {
-            loader: 'sass-loader'
-          }
-        ]
-      }
-    ]
+            loader: 'sass-loader',
+          },
+        ],
+      },
+      {
+        test: /\.(jpg|png|bmp|jpe?g|gif|ico|svg)$/,
+        type: 'asset',
+        parser: {
+          dataUrlCondition: {
+            maxSize: 8 * 1024, // 8kb
+          },
+        },
+      },
+    ],
   },
   plugins: [
     new ESLintPlugin({
-      extensions: ['.js', '.jsx', 'ts', 'tsx']
+      extensions: ['.js', '.jsx', 'ts', 'tsx'],
     }),
     new HtmlWebpackPlugin({
       title: 'webpack5-with-react',
       template: './src/index.html',
       favicon: './src/favicon.ico',
-      inject: 'body'
-    })
+      inject: 'body',
+    }),
   ],
   resolve: {
     alias: {
-      '@': path.resolve(__dirname, './src')
+      '@': path.resolve(__dirname, './src'),
     },
-    extensions: ['.ts', '.tsx', '.js', '.jsx']
-  }
+    extensions: ['.ts', '.tsx', '.js', '.jsx'],
+  },
 };
