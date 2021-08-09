@@ -3,6 +3,7 @@ const baseConfig = require('./webpack.config');
 
 module.exports = merge(baseConfig, {
   mode: 'development',
+  target: 'web',
   devServer: {
     clientLogLevel: 'warn',
     historyApiFallback: true, // 在开发单页应用时非常有用，它依赖于HTML5 history API，如果设置为true，所有的跳转将指向index.html

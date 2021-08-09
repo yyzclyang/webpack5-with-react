@@ -24,7 +24,7 @@ module.exports = merge(baseConfig, {
   plugins: [
     new CleanWebpackPlugin(),
     new MiniCssExtractPlugin({
-      filename: 'static/css/index.[contenthash].css',
+      filename: 'static/css/[name].[contenthash].css',
     }),
   ],
 });
