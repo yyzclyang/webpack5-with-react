@@ -1,4 +1,5 @@
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const TerserPlugin = require('terser-webpack-plugin');
 const { merge } = require('webpack-merge');
 const baseConfig = require('./webpack.config');
 
@@ -7,6 +8,17 @@ module.exports = merge(baseConfig, {
   optimization: {
     runtimeChunk: 'single',
     moduleIds: 'deterministic', // 将模块 id 固定
+    minimize: true,
+    minimizer: [
+      new TerserPlugin({
+        terserOptions: {
+          format: {
+            comments: false,
+          },
+        },
+        extractComments: false,
+      }),
+    ],
     splitChunks: {
       cacheGroups: {
         vendor: {
