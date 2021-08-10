@@ -10,6 +10,7 @@ module.exports = {
     path: path.resolve(__dirname, './dist'),
     filename: 'static/js/[name].[contenthash].js',
     assetModuleFilename: 'static/images/[name].[hash][ext][query]',
+    clean: true,
   },
   devtool: 'source-map',
   module: {
