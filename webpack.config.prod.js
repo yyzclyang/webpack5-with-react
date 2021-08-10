@@ -7,7 +7,7 @@ module.exports = merge(baseConfig, {
   mode: 'production',
   optimization: {
     runtimeChunk: 'single',
-    moduleIds: 'deterministic', // 将模块 id 固定
+    moduleIds: 'deterministic', // 使用哈希值作为模块 id
     minimize: true,
     minimizer: [
       new TerserPlugin({
@@ -19,15 +19,16 @@ module.exports = merge(baseConfig, {
         extractComments: false,
       }),
     ],
+    nodeEnv: 'production',
     splitChunks: {
+      maxSize: 200 * 1024 * 8, // 「原始单位是字节」，最大 200kb，再大就分包
+      chunks: 'all', // all 表示同步加载和异步加载，async 表示异步加载，initial 表示同步加载
       cacheGroups: {
-        vendor: {
+        commons: {
           minSize: 0, // 只要是 node_modules 里面的就抽出来
-          maxSize: 2000000, // 最大 200kb，再大就分包
           priority: 10,
           test: /[\\/]node_modules[\\/]/,
           name: 'vendors',
-          chunks: 'all', // all 表示同步加载和异步加载，async 表示异步加载，initial 表示同步加载
         },
       },
     },
